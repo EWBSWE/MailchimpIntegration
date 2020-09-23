@@ -1,4 +1,6 @@
-credentials.txt
+mailchimp_credentials.json
+member_site_login.json
+
 
 .*
 !.gitignore

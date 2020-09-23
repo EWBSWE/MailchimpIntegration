@@ -1,24 +1,14 @@
 from pprint import pprint
+import json
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
 
 # Read credentials
-cred_file = open('credentials.txt','r')
-api_key = ''
-server = ''
-for line in cred_file:
-    stripped_line = line.strip()
-    if stripped_line[:4] == 'key:':
-        api_key = stripped_line[4:].strip()
-    elif stripped_line[:7] == 'server:':
-        server = stripped_line[7:].strip()
+cred_data = json.load(open('mailchimp_credentials.json', 'r')) 
 
 try:
     mailchimp = Client()
-    mailchimp.set_config({
-        "api_key": api_key ,
-        "server": server
-        })
+    mailchimp.set_config(cred_data)
 
     list_id = "dd02c68798"
     body_params = {
