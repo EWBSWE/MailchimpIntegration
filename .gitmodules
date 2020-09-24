@@ -1,3 +1,3 @@
 [submodule "MemberStats"]
-	path = MemberStats
+	path = member_site_tools
 	url = https://github.com/EWBSWE/MemberStats.git

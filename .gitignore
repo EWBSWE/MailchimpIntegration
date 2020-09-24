@@ -1,6 +1,6 @@
 mailchimp_credentials.json
-member_site_login.json
-
+member_site_credentials.json
+*_credentials.json
 
 .*
 !.gitignore
