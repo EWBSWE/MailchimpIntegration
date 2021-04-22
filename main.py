@@ -16,6 +16,7 @@ ewb_session.login_with_credentials(json.dumps(ewb_cred_data))
 all_members = ewb_session.get_all_members()
 
 # Get the datetime when we last updated Mailchimp
+datetime_str = ''
 last_update_filename = 'last_update.txt'
 with open(last_update_filename, 'r') as last_update_file:
     datetime_str = last_update_file.read().strip()
@@ -26,11 +27,12 @@ with open(last_update_filename, 'r') as last_update_file:
 nbr_new_members, new_members = get_new_members(all_members, 
                                                datetime.fromisoformat(datetime_str), 
                                                extract=True)
+print(f'Number new members since {datetime_str}: {nbr_new_members}')
 
 with open(last_update_filename, 'w') as last_update_file:
     current_datetime = datetime.today().isoformat()
     last_update_file.write(current_datetime)
-    print(f'This updated: {current_datetime}')
+    print(f'This update: {current_datetime}')
     print(f'Updated "{last_update_filename}"')
 
 if len(new_members) < 1:
